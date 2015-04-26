@@ -1,0 +1,83 @@
+<md-toolbar>
+  <div class="md-toolbar-tools" style="padding: 50px;" >
+    <img src="images/logo-name.png" height="100px"/>
+    <!-- <md-button hide-gt-md aria-label="Menu">
+      <ng-md-icon icon="menu"></ng-md-icon>
+    </md-button> -->
+    <span flex></span>
+    <!-- <md-button  class="md-primary"><ng-md-icon icon="filter_list"></ng-md-icon>Edit Filters</md-button> -->
+    <md-button class="md-fab md-mini" ng-click="reset()" ng-show="showMap">
+            <ng-md-icon icon="settings_backup_restore"></ng-md-icon>
+        </md-button>
+  </div>
+</md-toolbar>
+<!-- <md-whiteframe class="md-whiteframe-z5" layout layout-align="center center"> -->
+<md-content class="md-padding .md-whiteframe-z5" layout layout-align="center center" ng-show="!showMap">
+  <md-card flex-gt-sm="90" flex-gt-md="80">
+    <md-card-content>
+      <h5 class="md-subhead">Add your Interests:</h5>
+      <tags-input ng-model="keywords" style="min-width:200px;" placeholder="Add Interests">
+        <auto-complete source="loadTags($query)" min-length=2></auto-complete>
+      </tags-input>
+      <br/>
+      <br/>
+
+      <div layout="row">
+        <md-input-container>
+          <input ng-model="chosenPlace" details="chosenPlaceDetails" googleplace style="width:500px" ng-change="onChange()" />
+        </md-input-container>
+      </div>
+      <div layout="row">
+      <md-select placeholder="No. of Bedrooms" ng-model="flatSize" multiple style="padding:10px">
+        <md-option value="1">1 BHK</md-option>
+        <md-option value="2">2 BHK</md-option>
+        <md-option value="3">3 BHK</md-option>
+        <md-option value="4">4+ BHK</md-option>
+      </md-select>
+      &nbsp;&nbsp;
+      <md-select placeholder="Property Type" ng-model="propertyType" multiple style="padding:10px">
+        <md-option value="1">Appartment</md-option>
+        <md-option value="2">Independent House</md-option>
+        <md-option value="3">Row House</md-option>
+        <md-option value="4">Villa</md-option>
+      </md-select>
+      </div>
+      <div layout="row">
+      <md-switch ng-model="gym" aria-label="Switch 1">
+        Gym
+      </md-switch>
+      &nbsp;&nbsp;
+      <md-switch ng-model="lift" aria-label="Switch 1">
+        Lift
+      </md-switch>
+      &nbsp;&nbsp;
+      <md-switch ng-model="swimming_pool" aria-label="Switch 1">
+        Swimming Pool
+      </md-switch>
+      &nbsp;&nbsp;
+      <md-switch ng-model="parking" aria-label="Switch 1">
+        Parking
+      </md-switch>
+      <md-button class="md-fab" ng-click="onClick()">
+            <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+    </div>
+    </md-card-content>
+  </md-card>
+</md-content>
+<!-- </md-whiteframe> -->
+  <!-- <div class="ng-scope"> -->
+      <div id="panel">
+        <button ng-show="false" ng-click="toggleHeatmap()">Toggle Heatmap</button>
+        <button ng-show="false" ng-click="changeGradient()">Change gradient</button>
+        <button ng-show="false" ng-click="changeRadius()">Change radius</button>
+        <button ng-show="false" ng-click="changeOpacity()">Change opacity</button>
+      </div>
+      <map ng-show="showMap" zoom="14" center="12.980094, 77.587238" map-type-id="ROADMAP" style="display: block; height: 1000px;z-index:-1;">
+        <heatmap-layer id="foo" data="taxiData">
+        </heatmap-layer>
+      </map>
+    <!-- </div> -->
+
+
+
